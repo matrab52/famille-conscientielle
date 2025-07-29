@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Bullshit Bingo - Édition Universelle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .score-container {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .score {
+            font-size: 4em;
+            font-weight: bold;
+            color: #e74c3c;
+            animation: scoreUpdate 0.5s ease-out;
+        }
+
+        @keyframes scoreUpdate {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .bingo-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .bingo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .bingo-item {
+            background: #f8f9fa;
+            border: 3px solid #dee2e6;
+            border-radius: 15px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bingo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .bingo-item.checked {
+            background: #e74c3c;
+            color: white;
+            border-color: #c0392b;
+            animation: checkAnimation 0.5s ease-out;
+        }
+
+        @keyframes checkAnimation {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .bingo-item .emoji {
+            font-size: 2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .bingo-item .points {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: #3498db;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .category {
+            font-size: 0.7em;
+            color: #7f8c8d;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        .textarea-container {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        .analyze-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .analyze-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .level-indicator {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .level-low { color: #27ae60; }
+        .level-medium { color: #f39c12; }
+        .level-high { color: #e74c3c; }
+        .level-extreme { color: #8b0000; animation: blink 1s infinite; }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.5; }
+        }
+
+        .reset-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 BULLSHIT BINGO</h1>
+        <p>Le détecteur de manipulation qui n'épargne personne !</p>
+    </div>
+
+    <div class="score-container">
+        <h2>Score de Bullshit</h2>
+        <div class="score" id="score">0</div>
+        <div id="level" class="level-indicator level-low">Niveau : Tranquille</div>
+    </div>
+
+    <div class="bingo-container">
+        <div class="textarea-container">
+            <textarea id="articleInput" placeholder="Collez ici un article, un tweet, un post Facebook, ou tapez n'importe quel texte à analyser..."></textarea>
+            <button class="analyze-btn" onclick="analyzeText()">🔍 Analyser le Bullshit</button>
+        </div>
+
+        <div class="bingo-grid" id="bingoGrid">
+            <!-- Les items seront générés dynamiquement -->
+        </div>
+
+        <div class="results" id="results">
+            <h3>🎪 Analyse Complète du Cirque</h3>
+            <p id="analysis"></p>
+            <button class="reset-btn" onclick="resetGame()">🔄 Nouvelle Partie</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>💡 Créé par la Famille Conscientielle - Parce que le bullshit n'a pas de couleur politique</p>
+    </div>
+
+    <script>
+        // Base de données des patterns de bullshit TOUS BORDS CONFONDUS
+        const bullshitPatterns = [
+            // Manipulation mainstream
+            {
+                id: 'experts',
+                emoji: '👨‍🔬',
+                text: '"Des experts disent"',
+                pattern: /experts?\s+(disent|affirment|pensent|estiment)/gi,
+                points: 10,
+                category: 'Mainstream',
+                description: 'Sans nommer les experts'
+            },
+            {
+                id: 'sources',
+                emoji: '🕵️',
+                text: '"Sources anonymes"',
+                pattern: /sources?\s+(anonymes?|proches?|bien\s+informées?)/gi,
+                points: 15,
+                category: 'Mainstream',
+                description: 'Le classique du journalisme paresseux'
+            },
+            {
+                id: 'breaking',
+                emoji: '🚨',
+                text: 'BREAKING/URGENT',
+                pattern: /breaking|urgent|flash\s+info|dernière\s+minute/gi,
+                points: 20,
+                category: 'Sensationnalisme',
+                description: 'Créer l\'urgence pour court-circuiter la réflexion'
+            },
+            
+            // Manipulation alternative
+            {
+                id: 'bigpharma',
+                emoji: '💊',
+                text: '"Big Pharma cache"',
+                pattern: /big\s+pharma|lobby\s+pharmaceutique|industrie\s+cache/gi,
+                points: 15,
+                category: 'Alternatif',
+                description: 'L\'ennemi invisible parfait'
+            },
+            {
+                id: 'mainstream',
+                emoji: '📺',
+                text: '"Médias mainstream"',
+                pattern: /médias?\s+mainstream|merdias|journalopes/gi,
+                points: 10,
+                category: 'Alternatif',
+                description: 'Disqualifier toute source officielle'
+            },
+            
+            // Manipulation émotionnelle (tous bords)
+            {
+                id: 'enfants',
+                emoji: '👶',
+                text: '"Pensez aux enfants"',
+                pattern: /pensez?\s+aux?\s+enfants?|nos\s+enfants?|protéger\s+les\s+enfants?/gi,
+                points: 25,
+                category: 'Émotion',
+                description: 'L\'argument massue émotionnel'
+            },
+            {
+                id: 'peur',
+                emoji: '😱',
+                text: 'Vocabulaire de peur',
+                pattern: /catastrophe|apocalypse|effondrement|danger\s+mortel|menace\s+existentielle/gi,
+                points: 20,
+                category: 'Émotion',
+                description: 'La peur paralyse la pensée critique'
+            },
+            
+            // Manipulation politique (tous bords)
+            {
+                id: 'eux',
+                emoji: '👥',
+                text: '"Eux contre nous"',
+                pattern: /eux\s+contre\s+nous|les\s+élites|le\s+système|la\s+caste|les\s+vrais\s+gens/gi,
+                points: 20,
+                category: 'Politique',
+                description: 'Diviser pour régner'
+            },
+            {
+                id: 'evident',
+                emoji: '🎯',
+                text: '"C\'est évident"',
+                pattern: /c\'est\s+évident|tout\s+le\s+monde\s+sait|il\s+est\s+clair\s+que/gi,
+                points: 15,
+                category: 'Rhétorique',
+                description: 'Éviter de prouver en affirmant l\'évidence'
+            },
+            
+            // Manipulation commerciale
+            {
+                id: 'revolution',
+                emoji: '🚀',
+                text: '"Révolutionnaire"',
+                pattern: /révolutionnaire|innovation\s+majeure|change\s+la\s+donne|game\s+changer/gi,
+                points: 10,
+                category: 'Marketing',
+                description: 'Tout est "révolutionnaire" de nos jours'
+            },
+            {
+                id: 'limité',
+                emoji: '⏰',
+                text: '"Offre limitée"',
+                pattern: /offre\s+limitée|stock\s+limité|plus\s+que\s+\d+|derniers?\s+jours?/gi,
+                points: 20,
+                category: 'Marketing',
+                description: 'Pression artificielle à l\'action'
+            },
+            
+            // Manipulation scientifique (détournement)
+            {
+                id: 'etudes',
+                emoji: '📊',
+                text: '"Des études montrent"',
+                pattern: /études?\s+(montrent?|prouvent?|démontrent?)|selon\s+une\s+étude/gi,
+                points: 15,
+                category: 'Science',
+                description: 'Sans citer l\'étude précise'
+            },
+            {
+                id: 'correlation',
+                emoji: '📈',
+                text: 'Corrélation = Causation',
+                pattern: /lié\s+à|en\s+rapport\s+avec|coïncidence\s+\?/gi,
+                points: 20,
+                category: 'Science',
+                description: 'Le sophisme classique'
+            },
+            
+            // Fact-checking biaisé
+            {
+                id: 'factcheck',
+                emoji: '✅',
+                text: '"Fact-checké faux"',
+                pattern: /fact-check|vérifié\s+faux|débunké|démenti\s+par/gi,
+                points: 15,
+                category: 'Meta',
+                description: 'Le fact-checking comme arme'
+            },
+            {
+                id: 'complot',
+                emoji: '🤐',
+                text: '"Théorie du complot"',
+                pattern: /théorie\s+du\s+complot|conspirationniste|complotiste/gi,
+                points: 20,
+                category: 'Meta',
+                description: 'Disqualifier sans argumenter'
+            },
+            
+            // NOUVEAUX PATTERNS - Manipulation subtile
+            {
+                id: 'inevitable',
+                emoji: '🎯',
+                text: '"Il est indispensable/nécessaire"',
+                pattern: /il\s+est\s+(indispensable|nécessaire|essentiel|crucial|impératif)/gi,
+                points: 15,
+                category: 'Subtil',
+                description: 'Présenter une option comme la seule possible'
+            },
+            {
+                id: 'scenario_unique',
+                emoji: '📉',
+                text: 'Scénario catastrophe unique',
+                pattern: /\+\d+\s*°C\s+(en\s+2100|d\'ici|à\s+l\'horizon)/gi,
+                points: 20,
+                category: 'Subtil',
+                description: 'Un seul futur présenté = pas d\'alternatives'
+            },
+            {
+                id: 'multiplication',
+                emoji: '🔢',
+                text: '"X fois plus"',
+                pattern: /\d+\s*fois\s+plus|multiplié\s+par\s+\d+|jusqu\'à\s+\d+/gi,
+                points: 10,
+                category: 'Subtil',
+                description: 'Multiplication anxiogène sans contexte'
+            },
+            {
+                id: 'adaptation',
+                emoji: '🏳️',
+                text: '"Il faut s\'adapter"',
+                pattern: /s\'adapter|adaptation|préparer\s+nos\s+sociétés/gi,
+                points: 25,
+                category: 'Subtil',
+                description: 'Renoncement déguisé en pragmatisme'
+            },
+            {
+                id: 'sans_solution',
+                emoji: '🚫',
+                text: 'Problème sans solution',
+                pattern: /impacts?\s+(importants?|majeurs?)|conséquences?\s+(importantes?|dramatiques?)/gi,
+                points: 20,
+                category: 'Subtil',
+                description: 'Paralysie par l\'impuissance'
+            },
+            {
+                id: 'vente_service',
+                emoji: '💰',
+                text: 'Service/produit salvateur',
+                pattern: /notre\s+service|nous\s+proposons|consultez\s+notre|découvrez\s+comment/gi,
+                points: 30,
+                category: 'Commercial',
+                description: 'Créer le problème, vendre la solution'
+            }
+        ];
+
+        let currentScore = 0;
+        let detectedPatterns = new Set();
+
+        function initializeBingo() {
+            const grid = document.getElementById('bingoGrid');
+            grid.innerHTML = '';
+            
+            bullshitPatterns.forEach(pattern => {
+                const item = document.createElement('div');
+                item.className = 'bingo-item';
+                item.id = pattern.id;
+                item.innerHTML = `
+                    <span class="points">+${pattern.points}</span>
+                    <span class="emoji">${pattern.emoji}</span>
+                    <div>${pattern.text}</div>
+                    <div class="category">${pattern.category}</div>
+                `;
+                item.onclick = () => toggleItem(pattern.id);
+                grid.appendChild(item);
+            });
+        }
+
+        function toggleItem(id) {
+            const item = document.getElementById(id);
+            const pattern = bullshitPatterns.find(p => p.id === id);
+            
+            if (item.classList.contains('checked')) {
+                item.classList.remove('checked');
+                detectedPatterns.delete(id);
+                currentScore -= pattern.points;
+            } else {
+                item.classList.add('checked');
+                detectedPatterns.add(id);
+                currentScore += pattern.points;
+            }
+            
+            updateScore();
+        }
+
+        function analyzeText() {
+            const text = document.getElementById('articleInput').value;
+            if (!text.trim()) {
+                alert('Collez un texte à analyser !');
+                return;
+            }
+
+            // Reset
+            detectedPatterns.clear();
+            currentScore = 0;
+            document.querySelectorAll('.bingo-item').forEach(item => {
+                item.classList.remove('checked');
+            });
+
+            // Analyse
+            let detectedList = [];
+            bullshitPatterns.forEach(pattern => {
+                const matches = text.match(pattern.pattern);
+                if (matches) {
+                    document.getElementById(pattern.id).classList.add('checked');
+                    detectedPatterns.add(pattern.id);
+                    currentScore += pattern.points;
+                    detectedList.push({
+                        ...pattern,
+                        count: matches.length
+                    });
+                }
+            });
+
+            updateScore();
+            showResults(detectedList);
+        }
+
+        function updateScore() {
+            const scoreElement = document.getElementById('score');
+            const levelElement = document.getElementById('level');
+            
+            scoreElement.textContent = currentScore;
+            scoreElement.style.animation = 'none';
+            setTimeout(() => scoreElement.style.animation = 'scoreUpdate 0.5s ease-out', 10);
+
+            // Niveaux de bullshit
+            levelElement.classList.remove('level-low', 'level-medium', 'level-high', 'level-extreme');
+            
+            if (currentScore === 0) {
+                levelElement.textContent = 'Niveau : Tranquille';
+                levelElement.classList.add('level-low');
+            } else if (currentScore < 50) {
+                levelElement.textContent = 'Niveau : Suspicieux 🤔';
+                levelElement.classList.add('level-low');
+            } else if (currentScore < 100) {
+                levelElement.textContent = 'Niveau : Manipulation Active 😤';
+                levelElement.classList.add('level-medium');
+            } else if (currentScore < 200) {
+                levelElement.textContent = 'Niveau : Propagande Intense 🤯';
+                levelElement.classList.add('level-high');
+            } else {
+                levelElement.textContent = 'Niveau : BULLSHIT NUCLÉAIRE ☢️';
+                levelElement.classList.add('level-extreme');
+            }
+        }
+
+        function showResults(detectedList) {
+            const results = document.getElementById('results');
+            const analysis = document.getElementById('analysis');
+            
+            if (detectedList.length === 0) {
+                analysis.innerHTML = '<strong>Wow !</strong> Soit ce texte est clean, soit il utilise des techniques qu\'on n\'a pas encore détectées. Restez vigilant ! 🧐';
+            } else {
+                let html = '<strong>Patterns de manipulation détectés :</strong><ul>';
+                
+                // Grouper par catégorie
+                const byCategory = {};
+                detectedList.forEach(item => {
+                    if (!byCategory[item.category]) byCategory[item.category] = [];
+                    byCategory[item.category].push(item);
+                });
+
+                Object.entries(byCategory).forEach(([category, items]) => {
+                    html += `<li><strong>${category} :</strong><ul>`;
+                    items.forEach(item => {
+                        html += `<li>${item.emoji} ${item.text} (×${item.count}) - ${item.description}</li>`;
+                    });
+                    html += '</ul></li>';
+                });
+                html += '</ul>';
+
+                // Recommandations
+                html += '<p><strong>💡 Conseil :</strong> ';
+                if (currentScore > 150) {
+                    html += 'Ce texte cumule les techniques de manipulation. Cherchez des sources indépendantes et vérifiez les faits cités.';
+                } else if (currentScore > 75) {
+                    html += 'Plusieurs red flags détectés. Lisez avec un œil critique et questionnez les motivations de l\'auteur.';
+                } else {
+                    html += 'Quelques patterns suspects. Gardez votre esprit critique actif !';
+                }
+                html += '</p>';
+
+                analysis.innerHTML = html;
+            }
+            
+            results.classList.add('show');
+        }
+
+        function resetGame() {
+            currentScore = 0;
+            detectedPatterns.clear();
+            document.getElementById('articleInput').value = '';
+            document.getElementById('results').classList.remove('show');
+            document.querySelectorAll('.bingo-item').forEach(item => {
+                item.classList.remove('checked');
+            });
+            updateScore();
+        }
+
+        // Initialisation
+        initializeBingo();
+    </script>
+</body>
+</html>
