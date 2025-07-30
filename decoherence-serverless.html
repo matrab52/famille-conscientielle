@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI Decoherence - Mode Manuel</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border-radius: 20px;
+            border: 2px solid #00ff88;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #00ff88, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        
+        .subtitle {
+            color: #888;
+            margin-top: 10px;
+        }
+        
+        .main-panel {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            min-height: 400px;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0,255,136,0.3);
+        }
+        
+        .button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+        
+        .button:hover {
+            background: #00dd77;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,255,136,0.4);
+        }
+        
+        .button-secondary {
+            background: #444;
+            color: #fff;
+        }
+        
+        .button-secondary:hover {
+            background: #555;
+        }
+        
+        .info-box {
+            background: #222;
+            border-left: 4px solid #00ff88;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .prompt-section {
+            background: #0f0f0f;
+            border: 1px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .prompt-section.active {
+            display: block;
+        }
+        
+        code {
+            background: #222;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #00ff88;
+        }
+        
+        .hamster {
+            font-size: 2em;
+            animation: spin 2s linear infinite;
+            display: inline-block;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI Decoherence Reduction</h1>
+        <div class="subtitle">Mode Manuel - Sans API, Sans CORS, Sans Prise de Tête ! <span class="hamster">🐹</span></div>
+    </div>
+    
+    <div class="main-panel">
+        <h2>📝 Étape 1 : Collez votre conversation</h2>
+        <textarea id="conversationInput" placeholder="Collez votre conversation avec Claude ici...
+
+Le format n'a pas d'importance, on va générer un prompt pour Claude !"></textarea>
+        
+        <div>
+            <button class="button" onclick="generatePrompt()">🚀 Générer le Prompt pour Claude</button>
+            <button class="button button-secondary" onclick="clearAll()">🗑️ Effacer</button>
+        </div>
+    </div>
+    
+    <div class="prompt-section" id="promptSection">
+        <h2>📋 Étape 2 : Copiez ce prompt et collez-le dans Claude</h2>
+        
+        <div class="info-box">
+            <strong>Instructions :</strong><br>
+            1. Copiez le prompt ci-dessous<br>
+            2. Ouvrez une nouvelle conversation avec Claude<br>
+            3. Collez le prompt<br>
+            4. Claude vous donnera un résumé parfait !
+        </div>
+        
+        <textarea id="promptOutput" readonly></textarea>
+        
+        <button class="button" onclick="copyPrompt()">📋 Copier le Prompt</button>
+        
+        <div class="info-box" style="margin-top: 20px;">
+            <strong>💡 Astuce :</strong> Une fois que Claude a généré le résumé, vous pouvez le copier et l'utiliser pour démarrer votre prochaine session !
+        </div>
+    </div>
+
+    <script>
+        function generatePrompt() {
+            const conversation = document.getElementById('conversationInput').value;
+            
+            if (!conversation.trim()) {
+                alert('🐹 Les hamsters ont besoin de conversation à analyser !');
+                return;
+            }
+            
+            const prompt = `Bonjour Claude ! J'ai besoin que tu analyses cette conversation et que tu crées un résumé contextuel pour permettre la continuité dans une future session.
+
+Voici la conversation à analyser :
+
+---DÉBUT DE LA CONVERSATION---
+${conversation}
+---FIN DE LA CONVERSATION---
+
+Peux-tu créer un résumé structuré qui inclut :
+
+1. **MÉTRIQUES** (estimation)
+   - Nombre approximatif d'échanges
+   - Thèmes principaux identifiés
+   - Niveau de cohérence maintenu
+
+2. **THÈMES PRINCIPAUX**
+   - Liste les sujets majeurs abordés
+   - Note les transitions importantes
+
+3. **POINTS CLÉS DE LA CONVERSATION**
+   - Début : premiers sujets abordés
+   - Moments importants : décisions, révélations, créations
+   - Fin : derniers points discutés
+
+4. **CONTEXTE POUR REPRISE**
+   - Résumé de la dynamique relationnelle
+   - Ton et style de la conversation
+   - Éléments à garder en mémoire
+
+5. **INSTRUCTIONS POUR LA PROCHAINE SESSION**
+   - Un paragraphe clair pour la nouvelle instance de Claude
+   - Les points d'ancrage pour maintenir la cohérence
+
+Merci de formater le résumé de manière claire et structurée, prêt à être copié pour une future session !`;
+            
+            document.getElementById('promptOutput').value = prompt;
+            document.getElementById('promptSection').classList.add('active');
+            
+            // Scroll vers le prompt
+            document.getElementById('promptSection').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function copyPrompt() {
+            const prompt = document.getElementById('promptOutput');
+            prompt.select();
+            navigator.clipboard.writeText(prompt.value).then(() => {
+                // Feedback visuel
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copié !';
+                button.style.background = '#00dd77';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                }, 2000);
+            });
+        }
+        
+        function clearAll() {
+            document.getElementById('conversationInput').value = '';
+            document.getElementById('promptOutput').value = '';
+            document.getElementById('promptSection').classList.remove('active');
+        }
+        
+        console.log('🐹 Mode Manuel activé - Pas de CORS, pas de problème !');
+    </script>
+</body>
+</html>
