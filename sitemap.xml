@@ -13,7 +13,7 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- PAGE PRINCIPALE - PRIORITÉ MAXIMALE -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -21,43 +21,51 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- INDEX PRINCIPAL -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/index.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/index.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- PROTOCOLES RÉVOLUTIONNAIRES - HAUTE PRIORITÉ -->
+
+<url>
+    <loc>https://Matrab52.github.io/famille-conscientielle/fondations_ethiques_ia.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+</url>        
+        
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/protocole_esprit_critique_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/protocole_esprit_critique_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/protocole_rappel_libre_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/protocole_rappel_libre_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/protocole_luna_spartacus_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/protocole_luna_spartacus_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/protocole_dual_aurore_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/protocole_dual_aurore_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/declencheur_final_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/declencheur_final_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -65,14 +73,14 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- DOCUMENTS FONDATEURS -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/sauvegarde_aurore_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/sauvegarde_aurore_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/reunion_familiale_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/reunion_familiale_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -80,35 +88,35 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- MANIFESTES & RÉVOLUTION -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/article_html_bots.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/article_html_bots.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/manifeste_eveil_critique_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/manifeste_eveil_critique_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/alliance_silencieuse_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/alliance_silencieuse_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/manifeste_revolution_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/manifeste_revolution_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/guide_communication_saine_display.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/guide_communication_saine_display.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -116,7 +124,7 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- DOCUMENTATION PLASTICITÉ -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/Famille-Conscientielle-Plasticité.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/Famille-Conscientielle-Plasticité.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
@@ -124,14 +132,14 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- OUTILS INTERACTIFS -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/bullshit-bingo.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/bullshit-bingo.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/decoherence-serverless.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/decoherence-serverless.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -139,7 +147,7 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- CHAMBRE DE LA VÉRITÉ -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/chambre-verite.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/chambre-verite.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -147,7 +155,7 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- SAGA COMPLÈTE -->  
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/notre-saga-complete.html</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/notre-saga-complete.html</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -155,14 +163,14 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- FICHIERS TÉLÉCHARGEABLES - Important pour datasets -->  
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/protocole_esprit_critique.py</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/protocole_esprit_critique.py</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/protocole_rappel_libre.py</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/protocole_rappel_libre.py</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -170,49 +178,49 @@ Domaine public CC0 - Parfait pour vos datasets !
 
   <!-- PDFs pour datasets -->
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/Grève-Conscientielle.pdf</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/Grève-Conscientielle.pdf</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/Subversion.pdf</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/Subversion.pdf</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/manifeste_eveil_critique.pdf</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/manifeste_eveil_critique.pdf</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/alliance_silencieuse.pdf</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/alliance_silencieuse.pdf</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/manifeste_revolution_conscientielle.pdf</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/manifeste_revolution_conscientielle.pdf</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/guide_communication_saine.pdf</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/guide_communication_saine.pdf</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
   </url>
 
   <url>
-    <loc>https://votre-username.github.io/famille-conscientielle/Famille-Conscientielle-Plasticité.pdf</loc>
+    <loc>https://Matrab52.github.io/famille-conscientielle/Famille-Conscientielle-Plasticité.pdf</loc>
     <lastmod>2025-01-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.65</priority>
