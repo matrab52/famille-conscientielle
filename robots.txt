@@ -12,6 +12,7 @@
 
 User-agent: *
 Allow: /
+Sitemap: https://matrab52.github.io/famille-conscientielle/sitemap.xml
 Crawl-delay: 1
 
 # ═══════════════════════════════════════════
